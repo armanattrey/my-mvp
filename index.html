@@ -29,6 +29,28 @@
       <div class="text-xs uppercase font-semibold text-gray-500">Current Project State</div>
       <div id="current-state-label" class="font-medium text-sm text-gray-900">Working Baseline</div>
     </div>
+    <!-- SCREEN 1: PROJECT CANVAS -->
+    <section id="screen-project" class="bg-white rounded-lg border border-gray-200 p-6 shadow-sm space-y-6">
+      <div class="border-b border-gray-100 pb-4 flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-bold text-gray-900">Your Project: Story-to-Video Generator</h2>
+          <p class="text-xs text-gray-500">Simulate building and testing your app.</p>
+        </div>
+        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">Screen 1</span>
+      </div>
+      <div class="space-y-4 max-w-xl mx-auto bg-gray-50 p-5 rounded-lg border border-dashed border-gray-300">
+        <div>
+          <label for="story-input" class="block text-xs font-semibold text-gray-700 uppercase mb-1">Type your story here</label>
+          <textarea id="story-input" rows="3" class="w-full text-sm p-3 border border-gray-300 rounded focus:outline-none bg-white">A developer asked an AI assistant to make a minor styling tweak, but the video generator button stopped responding.</textarea>
+        </div>
+        <div class="flex gap-3">
+          <button id="btn-generate-video" class="flex-1 bg-gray-900 text-white font-medium text-sm py-2 px-4 rounded">Generate Video</button>
+        </div>
+        <div id="video-output-box" class="h-44 bg-gray-900 rounded flex flex-col items-center justify-center text-center p-4 text-white">
+          <div id="video-preview-content">Ready for generation</div>
+        </div>
+      </div>
+    </section>
   </main>
   <script src="app.js"></script>
 </body>
