@@ -123,6 +123,54 @@
       </div>
     </section>
 
+    <!-- VIEW 3: SCREEN 3 & 4 (REVIEW & CONFIRM RESTORE) -->
+    <section id="screen-review" class="screen-panel hidden bg-white rounded-lg border border-gray-200 p-6 shadow-sm space-y-6">
+      <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+        <div>
+          <button id="btn-back-to-list-from-review" class="text-xs text-gray-500 hover:text-gray-900 mb-1 flex items-center space-x-1">
+            <span>&larr;</span> <span>Recent checkpoints</span>
+          </button>
+          <h2 class="text-lg font-bold text-gray-900">Review Restore</h2>
+          <p class="text-xs text-gray-500">Understand which version will replace your current workspace.</p>
+        </div>
+        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">Screen 3 & 4</span>
+      </div>
+
+      <div class="max-w-xl mx-auto space-y-5">
+        <!-- Selected Checkpoint Card -->
+        <div class="border border-gray-300 rounded-lg p-4 bg-gray-50">
+          <div class="text-xs font-semibold uppercase text-gray-500 tracking-wider">Selected Checkpoint</div>
+          <div id="review-checkpoint-title" class="text-base font-bold text-gray-900 mt-1">Before "Connect Video"</div>
+          <div id="review-checkpoint-time" class="text-xs text-gray-600 mt-0.5">Today 10:42 AM</div>
+          <div id="review-checkpoint-desc" class="text-xs text-gray-700 mt-2 bg-white p-2.5 rounded border border-gray-200 font-mono">
+            State: Video generator verified working prior to API modification.
+          </div>
+        </div>
+
+        <!-- Warning / Changes Card -->
+        <div class="border border-amber-200 bg-amber-50 rounded-lg p-4 space-y-2">
+          <div class="text-xs font-bold text-amber-900 uppercase">Changes after this point will be reverted:</div>
+          <ul class="text-xs text-amber-800 list-disc list-inside space-y-1 font-mono">
+            <li>videoForm.js (AI prompt edits reverted)</li>
+            <li>videoService.js (reverted back to verified handler)</li>
+          </ul>
+          <p class="text-xs text-amber-900 pt-1">
+            Your project will return to this saved version. Current un-saved code will be replaced.
+          </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center justify-between pt-2">
+          <button id="btn-cancel-restore" class="px-4 py-2 text-sm font-medium border border-gray-300 rounded text-gray-700 hover:bg-gray-50 transition">
+            Choose another point (Cancel)
+          </button>
+          <button id="btn-confirm-restore-action" class="px-5 py-2 text-sm font-bold bg-red-600 hover:bg-red-700 text-white rounded transition shadow-sm flex items-center space-x-1.5">
+            <span>Restore this Checkpoint</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
     
   </main>
 
@@ -155,6 +203,7 @@
     Notification message
   </div>
 
-    <script src="app.js"></script>
+  <!-- JAVASCRIPT APPLICATION LOGIC -->
+  <script src="app.js"></script>
 </body>
 </html>
