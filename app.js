@@ -151,6 +151,60 @@ function updateCheckpointBadge() {
   if (checkpointBadge) checkpointBadge.textContent = count;
 }
 
+// Screen 2: Render Checkpoint List
+function renderCheckpointsList() {
+  const list = getCheckpoints();
+  checkpointsContainer.innerHTML = '';
+
+  if (list.length === 0) {
+    checkpointsContainer.innerHTML = `
+      <div class="p-8 text-center text-gray-500 border border-dashed rounded-lg">
+        No saved checkpoints yet. Click "+ Save Recovery Point" above to save one.
+      </div>
+    `;
+    return;
+  }
+
+  list.forEach(cp => {
+    const card = document.createElement('div');
+    card.className = 'border border-gray-300 hover:border-gray-900 rounded-lg p-4 bg-gray-50 transition space-y-3';
+    card.innerHTML = `
+      <div class="flex items-start justify-between">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full ${cp.isWorking ? 'bg-green-600' : 'bg-gray-400'}"></span>
+            <span class="font-bold text-sm text-gray-900">${cp.label}</span>
+          </div>
+          <p class="text-xs text-gray-500 mt-0.5">${cp.timestamp}</p>
+        </div>
+        <span class="text-xs px-2 py-0.5 rounded font-mono bg-white border border-gray-200 text-gray-600">Verified Good</span>
+      </div>
+      <p class="text-xs text-gray-600 font-mono bg-white p-2 rounded border border-gray-100">
+        ${cp.notes || 'No description entered'}
+      </p>
+      <div class="pt-1 flex justify-end">
+        <button data-cp-id="${cp.id}" class="btn-review-cp text-xs font-semibold bg-gray-900 hover:bg-black text-white px-3 py-1.5 rounded transition">
+          Review this Checkpoint &rarr;
+        </button>
+      </div>
+    `;
+    checkpointsContainer.appendChild(card);
+  });
+
+  // Attach review listeners
+  document.querySelectorAll('.btn-review-cp').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const id = e.currentTarget.getAttribute('data-cp-id');
+      const cp = getCheckpoints().find(item => item.id === id);
+      if (cp) {
+        selectedCheckpointForRestore = cp;
+        openReviewScreen(cp);
+      }
+    });
+  });
+}
+
 
 initStorage();
 renderActiveStateUI();
+showScreen("project");

@@ -1,56 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Recovery Safety Net</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recovery Safety Net | AI Checkpoint & Restore</title>
+  <!-- Tailwind CSS CDN for modern, clean UI -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom minimal wireframe styling touches */
+    .screen-panel {
+      transition: all 0.2s ease-in-out;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
+<body class="bg-gray-100 text-gray-900 font-sans min-h-screen flex flex-col">
+
+  <!-- TOP APP NAVIGATION -->
   <header class="bg-white border-b border-gray-200 sticky top-0 z-30 shadow-sm">
     <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <div class="w-8 h-8 rounded bg-gray-900 text-white flex items-center justify-center font-bold text-sm">↺</div>
+        <div class="w-8 h-8 rounded bg-gray-900 text-white flex items-center justify-center font-bold text-sm">
+          ↺
+        </div>
         <div>
           <h1 class="text-base font-bold text-gray-900 leading-tight">Recovery Safety Net</h1>
           <p class="text-xs text-gray-500">AI Vibe Coding Safe Checkpoint & Restore</p>
         </div>
       </div>
       <div class="flex items-center space-x-2">
-        <button id="btn-open-save-modal" class="text-xs font-medium bg-gray-100 px-3 py-1.5 rounded border">+ Save Recovery Point</button>
-        <button id="btn-nav-checkpoints" class="text-xs font-medium bg-gray-900 text-white px-3 py-1.5 rounded flex items-center space-x-1.5">
+        <button id="btn-open-save-modal" class="text-xs md:text-sm font-medium bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1.5 rounded border border-gray-300 flex items-center space-x-1.5 transition">
+          <span>+</span>
+          <span>Save Recovery Point</span>
+        </button>
+        <button id="btn-nav-checkpoints" class="text-xs md:text-sm font-medium bg-gray-900 hover:bg-black text-white px-3 py-1.5 rounded flex items-center space-x-1.5 transition shadow-sm">
           <span>Recent Checkpoints</span>
-          <span id="checkpoint-badge" class="bg-gray-700 text-white text-xs px-1.5 py-0.5 rounded-full font-mono">0</span>
+          <span id="checkpoint-badge" class="bg-gray-700 text-white text-xs px-1.5 py-0.5 rounded-full font-mono">2</span>
         </button>
       </div>
     </div>
   </header>
+
+  <!-- MAIN CONTAINER -->
   <main class="flex-grow max-w-4xl w-full mx-auto p-4 md:p-6 space-y-6">
-    <div id="status-banner" class="bg-white border-l-4 border-gray-900 p-4 rounded shadow-sm">
-      <div class="text-xs uppercase font-semibold text-gray-500">Current Project State</div>
-      <div id="current-state-label" class="font-medium text-sm text-gray-900">Working Baseline</div>
+
+    <!-- ACTIVE STATE BANNER -->
+    <div id="status-banner" class="bg-white border-l-4 border-gray-900 p-4 rounded shadow-sm flex items-center justify-between">
+      <div class="space-y-0.5">
+        <div class="text-xs uppercase tracking-wider font-semibold text-gray-500">Current Project State</div>
+        <div id="current-state-label" class="font-medium text-sm text-gray-900">
+          Working Baseline (Latest AI Edits Active)
+        </div>
+      </div>
+      <div class="flex items-center space-x-2 text-xs">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full font-medium bg-green-100 text-green-800" id="live-indicator">
+          ● Live Active
+        </span>
+      </div>
     </div>
-    <!-- SCREEN 1: PROJECT CANVAS -->
-    <section id="screen-project" class="bg-white rounded-lg border border-gray-200 p-6 shadow-sm space-y-6">
+
+    <!-- VIEW 1: SCREEN 1 (PROJECT CANVAS / DEMO WORKSPACE) -->
+    <section id="screen-project" class="screen-panel bg-white rounded-lg border border-gray-200 p-6 shadow-sm space-y-6">
       <div class="border-b border-gray-100 pb-4 flex items-center justify-between">
         <div>
           <h2 class="text-lg font-bold text-gray-900">Your Project: Story-to-Video Generator</h2>
-          <p class="text-xs text-gray-500">Simulate building and testing your app.</p>
+          <p class="text-xs text-gray-500">Simulate building and testing your app. If an AI edit breaks it, restore a known working point.</p>
         </div>
         <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">Screen 1</span>
       </div>
+
+      <!-- Mock Project Workspace UI -->
       <div class="space-y-4 max-w-xl mx-auto bg-gray-50 p-5 rounded-lg border border-dashed border-gray-300">
         <div>
           <label for="story-input" class="block text-xs font-semibold text-gray-700 uppercase mb-1">Type your story here</label>
-          <textarea id="story-input" rows="3" class="w-full text-sm p-3 border border-gray-300 rounded focus:outline-none bg-white">A developer asked an AI assistant to make a minor styling tweak, but the video generator button stopped responding.</textarea>
+          <textarea id="story-input" rows="3" class="w-full text-sm p-3 border border-gray-300 rounded focus:ring-1 focus:ring-gray-900 focus:outline-none bg-white" placeholder="Once upon a time in a digital workshop...">A developer asked an AI assistant to make a minor styling tweak, but the video generator button stopped responding.</textarea>
         </div>
-        <div class="flex gap-3">
-          <button id="btn-generate-video" class="flex-1 bg-gray-900 text-white font-medium text-sm py-2 px-4 rounded">Generate Video</button>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button id="btn-generate-video" class="flex-1 bg-gray-900 hover:bg-black text-white font-medium text-sm py-2.5 px-4 rounded transition flex items-center justify-center space-x-2">
+            <span id="gen-spinner" class="hidden animate-spin">⟳</span>
+            <span id="gen-text">Generate Video</span>
+          </button>
+          <button id="btn-simulate-break" class="text-xs bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 px-3 py-2 rounded transition flex items-center justify-center">
+            ⚠️ Simulate AI Regression (Breaks Generator)
+          </button>
         </div>
-        <div id="video-output-box" class="h-44 bg-gray-900 rounded flex flex-col items-center justify-center text-center p-4 text-white">
-          <div id="video-preview-content">Ready for generation</div>
+
+        <!-- Video Player / Result Output Box -->
+        <div id="video-output-box" class="h-44 bg-gray-900 rounded flex flex-col items-center justify-center text-center p-4 text-white relative overflow-hidden">
+          <div id="video-preview-content" class="space-y-2">
+            <div class="text-3xl">🎬</div>
+            <div class="text-sm font-medium">Ready for generation</div>
+            <div class="text-xs text-gray-400">Click "Generate Video" to test this feature</div>
+          </div>
+        </div>
+
+        <!-- Quick Broken Help Link -->
+        <div class="flex items-center justify-between text-xs pt-1">
+          <span class="text-gray-500">Feature behaving strangely after prompt?</span>
+          <button id="btn-trigger-recovery-flow" class="text-red-700 font-medium hover:underline">
+            Generated video is not working? Restore a checkpoint &rarr;
+          </button>
         </div>
       </div>
     </section>
+
+    <!-- VIEW 2: SCREEN 2 (RECENT CHECKPOINTS LIST) -->
+    <section id="screen-checkpoints" class="screen-panel hidden bg-white rounded-lg border border-gray-200 p-6 shadow-sm space-y-6">
+      <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+        <div>
+          <button id="btn-back-to-project-from-list" class="text-xs text-gray-500 hover:text-gray-900 mb-1 flex items-center space-x-1">
+            <span>&larr;</span> <span>Back to project</span>
+          </button>
+          <h2 class="text-lg font-bold text-gray-900">Recent Checkpoints</h2>
+          <p class="text-xs text-gray-500">List of saved working versions before recent AI edits.</p>
+        </div>
+        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">Screen 2</span>
+      </div>
+
+      <!-- Checkpoint List -->
+      <div id="checkpoints-container" class="space-y-4 max-w-xl mx-auto">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </section>
+
+    
   </main>
   <script src="app.js"></script>
 </body>
