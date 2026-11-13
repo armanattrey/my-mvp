@@ -204,6 +204,86 @@ function renderCheckpointsList() {
   });
 }
 
+// Screen 3 & 4: Open Review & Confirm Restore
+function openReviewScreen(cp) {
+  document.getElementById('review-checkpoint-title').textContent = cp.label;
+  document.getElementById('review-checkpoint-time').textContent = cp.timestamp;
+  document.getElementById('review-checkpoint-desc').textContent = `Stored Snapshot State: "${cp.notes}"`;
+  showScreen('review');
+}
+
+// Restore Action (1 Clear Action)
+function executeRestore(cp) {
+  activeProjectState.label = `Restored to: ${cp.label}`;
+  activeProjectState.storyText = cp.storyContent || activeProjectState.storyText;
+  activeProjectState.isWorking = true; // Returns to verified working state
+  activeProjectState.lastRestoredFrom = cp.id;
+
+  saveActiveState();
+  showToast(`Successfully restored "${cp.label}"`);
+
+  // Reset checkboxes on Screen 5
+  document.getElementById('check-step-1').checked = false;
+  document.getElementById('check-step-2').checked = false;
+  document.getElementById('check-step-3').checked = false;
+
+  // Move directly to verification screen (Screen 5)
+  showScreen('verify');
+}
+
+// Simulate Generate Video Feature
+function handleGenerateVideo() {
+  if (!activeProjectState.isWorking) {
+    showToast('❌ Generation Failed! Code broke in recent edit.');
+    return;
+  }
+
+  btnGenerate.disabled = true;
+  genSpinner.classList.remove('hidden');
+  genText.textContent = 'Generating 3s Video...';
+
+  setTimeout(() => {
+    btnGenerate.disabled = false;
+    genSpinner.classList.add('hidden');
+    genText.textContent = 'Generate Video';
+
+    videoPreviewContent.innerHTML = `
+      <div class="text-4xl animate-bounce">✨</div>
+      <div class="text-sm font-bold text-green-300">Generated Video Preview:</div>
+      <div class="text-xs text-gray-200 italic max-w-sm">"${storyInput.value.substring(0, 75)}..."</div>
+      <div class="text-xs text-green-400 mt-1">✓ Function verified working at 1080p</div>
+    `;
+    showToast('✓ Video generated successfully!');
+  }, 900);
+}
+
+// EVENT LISTENERS
+
+// Generate Button
+btnGenerate.addEventListener('click', handleGenerateVideo);
+
+// Break Simulator Button
+btnSimulateBreak.addEventListener('click', () => {
+  activeProjectState.isWorking = false;
+  activeProjectState.label = 'Unverified AI Edit (Regression: videoService broken)';
+  saveActiveState();
+  showToast('⚠️ AI Edit Simulated: The video generator has stopped working!');
+});
+
+// Navigation Links
+document.getElementById('btn-nav-checkpoints').addEventListener('click', () => showScreen('checkpoints'));
+document.getElementById('btn-back-to-project-from-list').addEventListener('click', () => showScreen('project'));
+document.getElementById('btn-back-to-list-from-review').addEventListener('click', () => showScreen('checkpoints'));
+document.getElementById('btn-trigger-recovery-flow').addEventListener('click', () => showScreen('checkpoints'));
+document.getElementById('btn-cancel-restore').addEventListener('click', () => showScreen('checkpoints'));
+
+// Confirm Restore Action Button
+document.getElementById('btn-confirm-restore-action').addEventListener('click', () => {
+  if (selectedCheckpointForRestore) {
+    executeRestore(selectedCheckpointForRestore);
+  }
+});
+
 
 initStorage();
 renderActiveStateUI();
