@@ -284,7 +284,69 @@ document.getElementById('btn-confirm-restore-action').addEventListener('click', 
   }
 });
 
+// Screen 5 Verification Buttons
+document.getElementById('btn-still-broken').addEventListener('click', () => {
+  showScreen('checkpoints');
+});
 
+document.getElementById('btn-checked-passed').addEventListener('click', () => {
+  showToast('🎉 Verification complete! Returning to project.');
+  showScreen('project');
+});
+
+// Save Modal Handling
+const modalSave = document.getElementById('modal-save');
+const btnOpenSaveModal = document.getElementById('btn-open-save-modal');
+const btnCloseSaveModal = document.getElementById('btn-close-save-modal');
+const btnCancelSave = document.getElementById('btn-cancel-save');
+const btnConfirmSave = document.getElementById('btn-confirm-save');
+const checkpointLabelInput = document.getElementById('checkpoint-label-input');
+const checkpointNotesInput = document.getElementById('checkpoint-notes-input');
+
+function openSaveModal() {
+  checkpointLabelInput.value = '';
+  checkpointNotesInput.value = '';
+  modalSave.classList.remove('hidden');
+  checkpointLabelInput.focus();
+}
+
+function closeSaveModal() {
+  modalSave.classList.add('hidden');
+}
+
+btnOpenSaveModal.addEventListener('click', openSaveModal);
+btnCloseSaveModal.addEventListener('click', closeSaveModal);
+btnCancelSave.addEventListener('click', closeSaveModal);
+
+btnConfirmSave.addEventListener('click', () => {
+  const label = checkpointLabelInput.value.trim();
+  if (!label) {
+    alert('Please enter a short checkpoint label.');
+    return;
+  }
+
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const newCheckpoint = {
+    id: 'cp-' + Date.now(),
+    label: label,
+    timestamp: `Today ${timeStr}`,
+    rawTime: Date.now(),
+    notes: checkpointNotesInput.value.trim() || 'Manual checkpoint before AI edit.',
+    storyContent: storyInput.value,
+    isWorking: activeProjectState.isWorking,
+    affectedFiles: ['projectWorkspace.js']
+  };
+
+  const list = getCheckpoints();
+  list.unshift(newCheckpoint); // Add to beginning (most recent first)
+  saveCheckpoints(list);
+
+  closeSaveModal();
+  showToast(`Saved checkpoint: "${label}"`);
+});
+
+// App Startup
 initStorage();
 renderActiveStateUI();
-showScreen("project");
+showScreen('project');

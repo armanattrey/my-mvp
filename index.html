@@ -171,9 +171,63 @@
       </div>
     </section>
 
-    
+    <!-- VIEW 4: SCREEN 5 (VERIFICATION / CHECK THE FAILURE) -->
+    <section id="screen-verify" class="screen-panel hidden bg-white rounded-lg border border-gray-200 p-6 shadow-sm space-y-6">
+      <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+        <div>
+          <h2 class="text-lg font-bold text-gray-900">Check the Failure</h2>
+          <p class="text-xs text-gray-500">Confirm the restored checkpoint brings back the original working behavior.</p>
+        </div>
+        <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">Screen 5</span>
+      </div>
+
+      <div class="max-w-xl mx-auto space-y-5">
+        <div class="p-3 bg-green-50 border border-green-300 rounded text-xs text-green-900 flex items-center space-x-2">
+          <span>✓</span>
+          <span><strong>Project successfully restored!</strong> Follow the verification steps below:</span>
+        </div>
+
+        <div class="space-y-3">
+          <label class="flex items-center p-3 border border-gray-200 rounded hover:bg-gray-50 cursor-pointer space-x-3">
+            <input type="checkbox" id="check-step-1" class="rounded text-gray-900 focus:ring-gray-900 h-4 w-4" />
+            <div class="text-xs">
+              <span class="font-bold text-gray-900">1. Enter a short story</span>
+              <p class="text-gray-500">Verify text prompt area accepts story input.</p>
+            </div>
+          </label>
+
+          <label class="flex items-center p-3 border border-gray-200 rounded hover:bg-gray-50 cursor-pointer space-x-3">
+            <input type="checkbox" id="check-step-2" class="rounded text-gray-900 focus:ring-gray-900 h-4 w-4" />
+            <div class="text-xs">
+              <span class="font-bold text-gray-900">2. Select "Generate video"</span>
+              <p class="text-gray-500">Click the generate button and observe active progress.</p>
+            </div>
+          </label>
+
+          <label class="flex items-center p-3 border border-gray-200 rounded hover:bg-gray-50 cursor-pointer space-x-3">
+            <input type="checkbox" id="check-step-3" class="rounded text-gray-900 focus:ring-gray-900 h-4 w-4" />
+            <div class="text-xs">
+              <span class="font-bold text-gray-900">3. Look for a preview</span>
+              <p class="text-gray-500">Check that the video preview render completes successfully.</p>
+            </div>
+          </label>
+        </div>
+
+        <!-- Buttons for Next Action -->
+        <div class="flex flex-col sm:flex-row gap-3 pt-3">
+          <button id="btn-still-broken" class="flex-1 px-4 py-2.5 text-xs font-semibold text-gray-700 border border-gray-300 rounded hover:bg-gray-50 text-center">
+            Still broken: Try another checkpoint
+          </button>
+          <button id="btn-checked-passed" class="flex-1 px-4 py-2.5 text-xs font-bold text-white bg-green-700 hover:bg-green-800 rounded text-center shadow-sm">
+            I checked: Failure is resolved! Continue working
+          </button>
+        </div>
+      </div>
+    </section>
+
   </main>
 
+  <!-- MODAL: SAVE RECOVERY POINT -->
   <div id="modal-save" class="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6 space-y-4">
       <div class="flex items-center justify-between border-b pb-2">
