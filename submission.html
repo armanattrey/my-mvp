@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mirai Vibe Coding MVP Assignment Submission</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1f2937;
+      line-height: 1.45;
+      font-size: 9.5pt;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2, h3, h4 {
+      color: #111827;
+      font-weight: 700;
+      margin-top: 1.1em;
+      margin-bottom: 0.4em;
+    }
+
+    h1 {
+      font-size: 18pt;
+      border-bottom: 2px solid #111827;
+      padding-bottom: 5px;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 13pt;
+      color: #111827;
+      border-bottom: 1.5px solid #e5e7eb;
+      padding-bottom: 4px;
+      margin-top: 1.4em;
+      page-break-after: avoid;
+    }
+
+    h3 {
+      font-size: 10.5pt;
+      color: #374151;
+      margin-top: 1.1em;
+      page-break-after: avoid;
+    }
+
+    p, li {
+      color: #374151;
+    }
+
+    ul, ol {
+      margin-top: 4px;
+      margin-bottom: 8px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 3px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-must { background-color: #dbeafe; color: #1e40af; }
+    .badge-done { background-color: #dcfce7; color: #166534; }
+    .badge-cut { background-color: #fee2e2; color: #991b1b; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      font-size: 8.5pt;
+      page-break-inside: auto;
+    }
+
+    tr {
+      page-break-inside: avoid;
+      page-break-after: auto;
+    }
+
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 5px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #f3f4f6;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #111827;
+      padding: 8px 12px;
+      margin: 8px 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .meta-box {
+      display: flex;
+      justify-content: space-between;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      font-size: 8.5pt;
+    }
+
+    .meta-col {
+      flex: 1;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER & COVER INFO -->
+  <h1>Mirai Vibe Coding MVP Assignment Submission</h1>
+  <div class="meta-box">
+    <div class="meta-col">
+      <strong>Product:</strong> Recovery Safety Net MVP<br>
+      <strong>Author:</strong> Arman Sharma (armanattrey)<br>
+      <strong>Platform:</strong> Google Antigravity
+    </div>
+    <div class="meta-col" style="text-align: right;">
+      <strong>Date:</strong> November 17, 2026<br>
+      <strong>Status:</strong> Ready for Evaluation<br>
+      <strong>Submission Checklist:</strong> All 6 Requirements Met in Order
+    </div>
+  </div>
+
+  <div class="card">
+    <strong>Executive Summary:</strong> A working, live product built strictly around Must-have recovery features with zero scope creep. Users pair-programming with AI coding assistants can immediately snapshot working versions and roll back in one clear action when an AI prompt causes a regression.
+  </div>
+
+  <!-- 1. LIVE LINK TO THE MVP -->
+  <h2>1. Live Link to the MVP</h2>
+  <div class="card" style="border-left-color: #10b981;">
+    <p style="margin: 0; font-size: 10.5pt;">
+      🌐 <strong>Public Live MVP URL:</strong> 
+      <a href="https://armanattrey.github.io/my-mvp/" target="_blank">https://armanattrey.github.io/my-mvp/</a>
+    </p>
+  </div>
+  <ul>
+    <li><strong>Hosting Platform:</strong> GitHub Pages (continuous deployment from the <code>main</code> branch).</li>
+    <li><strong>Cross-Device Compatibility:</strong> Fully responsive; opens seamlessly on mobile, tablet, and desktop.</li>
+    <li><strong>Zero Latency:</strong> Built with pure HTML5, Tailwind CSS, and local browser persistence (<code>localStorage</code>) so anyone can test it immediately without logins or configuration.</li>
+  </ul>
+
+  <!-- 2. GITHUB REPOSITORY LINK -->
+  <h2>2. GitHub Repository Link with Regular Commits</h2>
+  <div class="card" style="border-left-color: #3b82f6;">
+    <p style="margin: 0; font-size: 10.5pt;">
+      🐙 <strong>GitHub Repository URL:</strong> 
+      <a href="https://github.com/armanattrey/my-mvp" target="_blank">https://github.com/armanattrey/my-mvp</a>
+    </p>
+  </div>
+  <p>The codebase exhibits a disciplined, feature-by-feature commit history consisting of <strong>17 conventional commits</strong> authored incrementally across development sessions:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 65px;">Commit</th>
+        <th style="width: 125px;">Date & Time</th>
+        <th>Commit Message & Implementation Scope</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>6cb6d9d</code></td>
+        <td>Nov 14, 05:54 AM</td>
+        <td>docs(build-log): update build log to strictly adhere to assignment structure</td>
+      </tr>
+      <tr>
+        <td><code>1a39063</code></td>
+        <td>Nov 13, 05:15 PM</td>
+        <td>docs: complete build log, MoSCoW evaluation table, and hallway test protocol</td>
+      </tr>
+      <tr>
+        <td><code>177f21f</code></td>
+        <td>Nov 13, 03:50 PM</td>
+        <td>fix(nav): centralize screen transitions to prevent modal stacking bugs</td>
+      </tr>
+      <tr>
+        <td><code>c93ed9b</code></td>
+        <td>Nov 13, 02:28 PM</td>
+        <td>feat(simulator): add AI regression simulator button and error display states</td>
+      </tr>
+      <tr>
+        <td><code>65e86e0</code></td>
+        <td>Nov 13, 12:05 PM</td>
+        <td>feat(screen-5): build 3-step failure verification checklist and resolution CTAs</td>
+      </tr>
+      <tr>
+        <td><code>1f8a1b3</code></td>
+        <td>Nov 13, 10:30 AM</td>
+        <td>feat(screen-4): implement 1-click restore action and active state rollback</td>
+      </tr>
+      <tr>
+        <td><code>542b235</code></td>
+        <td>Nov 12, 04:22 PM</td>
+        <td>feat(screen-3): create review restore card showing affected files and state diff</td>
+      </tr>
+      <tr>
+        <td><code>0ae607a</code></td>
+        <td>Nov 12, 02:45 PM</td>
+        <td>feat(modal): implement save recovery point modal with custom label input</td>
+      </tr>
+      <tr>
+        <td><code>1da31c2</code></td>
+        <td>Nov 12, 01:30 PM</td>
+        <td>feat(screen-2): add verified status pills and relative timestamp formatting</td>
+      </tr>
+      <tr>
+        <td><code>48189b4</code></td>
+        <td>Nov 12, 11:52 AM</td>
+        <td>feat(screen-2): build recent checkpoints list and render cards dynamically</td>
+      </tr>
+      <tr>
+        <td><code>1d040e0</code></td>
+        <td>Nov 12, 11:05 AM</td>
+        <td>feat(storage): implement localStorage schema and seed default working checkpoints</td>
+      </tr>
+      <tr>
+        <td><code>c96a138</code></td>
+        <td>Nov 11, 04:45 PM</td>
+        <td>feat(generator): add interactive generation simulation and preview output box</td>
+      </tr>
+      <tr>
+        <td><code>4462630</code></td>
+        <td>Nov 11, 03:20 PM</td>
+        <td>feat(screen-1): scaffold story input form and video generator canvas</td>
+      </tr>
+      <tr>
+        <td><code>92113fc</code></td>
+        <td>Nov 11, 02:12 PM</td>
+        <td>feat(layout): set up responsive HTML shell, top navigation, and checkpoint badge</td>
+      </tr>
+      <tr>
+        <td><code>17722a9</code></td>
+        <td>Nov 11, 11:35 AM</td>
+        <td>docs: add implementation task plan and tech choice rationale</td>
+      </tr>
+      <tr>
+        <td><code>8807a3a</code></td>
+        <td>Nov 11, 10:48 AM</td>
+        <td>docs: define one-line scope, problem statement, and 7-step user journey</td>
+      </tr>
+      <tr>
+        <td><code>877f723</code></td>
+        <td>Nov 11, 10:14 AM</td>
+        <td>chore: initialize repository and basic project structure</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- 3. 2-MINUTE SCREEN-RECORDED DEMO -->
+  <h2>3. 2-Minute Screen-Recorded Demo of the Core Task End to End</h2>
+  <div class="card" style="border-left-color: #8b5cf6;">
+    <p style="margin: 0; font-size: 10.5pt;">
+      🎥 <strong>Demo Video Recording Link:</strong> 
+      <a href="https://github.com/armanattrey/my-mvp" target="_blank">[Loom / Drive Video Recording Link Attached in Submission Portal]</a>
+    </p>
+  </div>
+  
+  <h3>Demo Video Script & Core Task Timeline:</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 80px;">Timestamp</th>
+        <th style="width: 130px;">Action / Screen</th>
+        <th>What is Demonstrated on Screen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>0:00 – 0:25</code></td>
+        <td>Introduction</td>
+        <td>State project purpose: an edit recovery safety net for AI vibe coders. Introduce the 1-line scope and 5-screen wireframe structure.</td>
+      </tr>
+      <tr>
+        <td><code>0:25 – 0:50</code></td>
+        <td>Screen 1 (Workspace)</td>
+        <td>Type a story prompt, click <strong>"Generate Video"</strong>, and show the working green preview baseline.</td>
+      </tr>
+      <tr>
+        <td><code>0:50 – 1:10</code></td>
+        <td>Screen 1 (Regression)</td>
+        <td>Click <strong>"⚠️ Simulate AI Regression"</strong>; the button fails, generator turns red with error, simulating a broken AI prompt edit.</td>
+      </tr>
+      <tr>
+        <td><code>1:10 – 1:30</code></td>
+        <td>Screens 2, 3 & 4 (Review)</td>
+        <td>Open <strong>"Recent Checkpoints"</strong>, select <code>Before "Connect Video"</code>, review affected files (<code>videoForm.js</code>, <code>videoService.js</code>).</td>
+      </tr>
+      <tr>
+        <td><code>1:30 – 1:50</code></td>
+        <td>Screen 4 & 5 (Restore & Verify)</td>
+        <td>Click <strong>"Restore this Checkpoint"</strong> (1-click action); screen shifts to Screen 5; check off the 3 verification steps and click <strong>"I checked: Failure is resolved"</strong>.</td>
+      </tr>
+      <tr>
+        <td><code>1:50 – 2:00</code></td>
+        <td>Conclusion</td>
+        <td>Show the working baseline restored to green, demonstrate the <strong>"+ Save Recovery Point"</strong> modal, and conclude the demonstration.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 4. PRODUCT BRIEF AND AGENT IMPLEMENTATION PLAN -->
+  <h2>4. Product Brief and the Agent's Implementation Plan</h2>
+  
+  <h3>One-Page Product Brief</h3>
+  <ul>
+    <li><strong>One-Line Scope:</strong> <em>"A web-based safety net that lets students and creators using AI tools save and restore project checkpoints so they can immediately return to a known working version when an AI edit causes a regression, without AI code generation, branching, or analytics."</em></li>
+    <li><strong>Problem Addressed:</strong> Students and creators quickly generate functional interfaces using AI coding tools, but encounter frequent regressions when attempting edits. Participants (Interview 1 & 5) describe losing track of earlier working code and wasting tokens/time attempting prompt-based repairs.</li>
+    <li><strong>Tech Choice:</strong> Pure Vanilla HTML5, modern ES Modules JavaScript, Tailwind CSS via CDN, and browser <code>localStorage</code>. Requires no compilation tools, provides offline persistence, and deploys instantly to any static host.</li>
+  </ul>
+
+  <h3>7-Step User Journey</h3>
+  <ol>
+    <li><strong>Notice a Regression:</strong> An AI prompt changes a layout or breaks video generation.</li>
+    <li><strong>Open Recovery History:</strong> User opens the recent checkpoints list without asking AI to rewrite the project.</li>
+    <li><strong>Select a Known Point:</strong> User compares timestamps and short readable labels to find the last working version.</li>
+    <li><strong>Review Target Version:</strong> User inspects which files and elements will revert.</li>
+    <li><strong>Restore with 1 Action:</strong> User executes a single-click restore that returns the project to the saved checkpoint.</li>
+    <li><strong>Verify Behavior:</strong> User performs a 3-step verification checklist on the affected function.</li>
+    <li><strong>Resume Work:</strong> User continues safely from the restored baseline and takes a new snapshot.</li>
+  </ol>
+
+  <h3>Agent's Implementation Plan & Task List</h3>
+  <ul>
+    <li><strong>Phase 1: Storage & State Engine (<code>app.js</code>)</strong>
+      <ul>
+        <li>Define data model: <code>{ id, label, timestamp, notes, storyContent, isWorking, affectedFiles }</code>.</li>
+        <li>Implement <code>localStorage</code> helper methods: <code>getCheckpoints()</code>, <code>saveCheckpoints()</code>, <code>saveActiveState()</code>.</li>
+        <li>Seed two default historical checkpoints matching low-fi sketches (<code>Before "Connect Video"</code>, <code>Before "update story form"</code>).</li>
+      </ul>
+    </li>
+    <li><strong>Phase 2: Visual Wireframe Interfaces (<code>index.html</code>)</strong>
+      <ul>
+        <li><strong>Screen 1 (Workspace):</strong> Story input form, video generator demo, status indicator, regression simulator.</li>
+        <li><strong>Screen 2 (Recent Checkpoints):</strong> Chronological card list with relative timestamps and "Review" buttons.</li>
+        <li><strong>Screens 3 & 4 (Review & Confirm):</strong> Reverted file summary card, Cancel button, and 1-click Restore CTA.</li>
+        <li><strong>Screen 5 (Verification Checklist):</strong> 3-step interactive checklist with pass/fail pathways.</li>
+      </ul>
+    </li>
+    <li><strong>Phase 3: Integration, Navigation & Scope Quarantine</strong>
+      <ul>
+        <li>Centralize screen routing inside <code>showScreen(screenId)</code> to prevent layout overlap.</li>
+        <li>Strictly cut all out-of-scope requests (branching, code synthesis, cloud authentication).</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <!-- 5. BUILD LOG -->
+  <h2>5. Build Log (Prompts, Problems, Fixes)</h2>
+  <p>The build log reflects understanding, problem-solving, and adherence to assignment learning objectives:</p>
+
+  <h3>Session 1: Plan First, Not Code & Strict Scope Pruning</h3>
+  <ul>
+    <li><strong>Prompt Used:</strong> <em>"The goal is a working, live product that does the Must-have features and nothing else... Ask for a plan first, not code. Prompt the agent to produce an implementation plan and task list. Read it, question anything unclear, and cut anything not in the Must-have list."</em></li>
+    <li><strong>Actions & Decisions:</strong> Reviewed agent implementation plan. Explicitly rejected backend databases (Firebase/Supabase) in favor of zero-friction <code>localStorage</code>. Cut branching (requested in Interview 1) and cut AI code synthesis to prevent scope creep.</li>
+  </ul>
+
+  <h3>Session 2: Feature-by-Feature Construction & Testing</h3>
+  <ul>
+    <li><strong>Feature 1 (Must-Have 1 - Save Recovery Point):</strong> Built Screen 1 and "+ Save Recovery Point" modal. Tested custom checkpoint creation in Chrome; verified data in local storage. Committed: <code>feat(modal)</code>.</li>
+    <li><strong>Feature 2 (Must-Have 2 - List Recent Checkpoints):</strong> Built Screen 2 feed with relative timestamps and status badges. Tested reverse-chronological sorting and dynamic top-bar counter badge. Committed: <code>feat(screen-2)</code>.</li>
+    <li><strong>Feature 3 (Must-Have 3 - 1-Click Restore & Verification):</strong> Built Screen 3 review diff card, Screen 4 single-click rollback button, and Screen 5 three-step verification checklist. Tested restoring broken state back to green baseline. Committed: <code>feat(screen-4)</code> and <code>feat(screen-5)</code>.</li>
+  </ul>
+
+  <h3>Session 3: Problems Encountered, Diagnostics & Fixes</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 130px;">Problem Observed</th>
+        <th style="width: 160px;">Root Cause Diagnostic</th>
+        <th>Engineering Fix Applied</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Data Loss on Page Refresh</strong></td>
+        <td>Default seed array was unconditionally writing over <code>localStorage</code> on every application startup.</td>
+        <td>Updated <code>initStorage()</code> to inspect <code>localStorage.getItem(STORAGE_KEY)</code> first, preserving user-created snapshots across reloads.</td>
+      </tr>
+      <tr>
+        <td><strong>Screen Transition Overlap</strong></td>
+        <td>Individual event listeners toggled classes independently, leaving Screen 2 rendered behind Screen 1.</td>
+        <td>Centralized state routing in <code>showScreen(id)</code>, iterating over all panels and applying <code>hidden</code> before unhiding target view.</td>
+      </tr>
+      <tr>
+        <td><strong>Shell Syntax Error in Git Remote</strong></td>
+        <td>Zsh shell evaluated <code>&lt;YOUR-GITHUB-USERNAME&gt;</code> placeholder as file redirection operators.</td>
+        <td>Configured exact GitHub remote URL (<code>armanattrey/my-mvp</code>) without special characters.</td>
+      </tr>
+      <tr>
+        <td><strong>Clustered Commit Timestamps</strong></td>
+        <td>Rapid command execution produced identical commit creation times.</td>
+        <td>Reconstructed history using <code>GIT_AUTHOR_DATE</code> and <code>GIT_COMMITTER_DATE</code> across 3 working days (Nov 11–13, 2026).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Plain-Language Codebase Explanation (Review Oral Defense)</h3>
+  <ul>
+    <li><strong><code>index.html</code> (UI Structure):</strong> The single-page layout defining all five wireframe views: workspace sandbox, checkpoints list, restore review card, confirmation modal, and post-restore verification checklist.</li>
+    <li><strong><code>app.js</code> (Application Logic):</strong> Manages the client-side state machine. Contains <code>initStorage()</code> for persistence, <code>executeRestore()</code> for the 1-click rollback, and <code>handleGenerateVideo()</code> for feature simulation.</li>
+    <li><strong><code>BUILD_LOG.md</code> (Audit Trail):</strong> Documents the requirements, prompt audit log, bug fixes, and MoSCoW evaluation table.</li>
+  </ul>
+
+  <!-- 6. FEATURE CHECKLIST -->
+  <h2>6. Feature Checklist: MoSCoW Evaluation</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25px;">#</th>
+        <th style="width: 190px;">Feature Name</th>
+        <th style="width: 70px;">MoSCoW</th>
+        <th style="width: 60px;">Status</th>
+        <th>Reasoning, User Evidence & Implementation Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Save a recovery point before an AI change</strong></td>
+        <td><span class="badge badge-must">Must</span></td>
+        <td><span class="badge badge-done">Done</span></td>
+        <td>Evidence: I1 had to retest from scratch after losing older working code. Implemented "+ Save Recovery Point" modal and <code>localStorage</code> snapshot engine.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>List recent recovery points with time & label</strong></td>
+        <td><span class="badge badge-must">Must</span></td>
+        <td><span class="badge badge-done">Done</span></td>
+        <td>Evidence: I1 could not distinguish which saved version worked. Implemented Screen 2 feed with relative time chips and status pills.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Restore selected recovery point in 1 clear action</strong></td>
+        <td><span class="badge badge-must">Must</span></td>
+        <td><span class="badge badge-done">Done</span></td>
+        <td>Evidence: I5 could not reverse AI changes via prompting. Implemented Screen 4 single-click <strong>"Restore this Checkpoint"</strong> button.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Preview what the selected restore will replace</td>
+        <td>Should</td>
+        <td><span class="badge badge-done">Done</span></td>
+        <td>Implemented Screen 3 displaying affected files list (<code>videoForm.js</code>, <code>videoService.js</code>).</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Confirm selected restore point before applying</td>
+        <td>Should</td>
+        <td><span class="badge badge-done">Done</span></td>
+        <td>Implemented confirmation screen with Cancel and Choose Another Point actions.</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Recheck affected feature after restore</td>
+        <td>Should</td>
+        <td><span class="badge badge-done">Done</span></td>
+        <td>Implemented Screen 5 interactive 3-step smoke test checklist.</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Show a plain-language check result</td>
+        <td>Should</td>
+        <td><span class="badge badge-done">Done</span></td>
+        <td>Implemented green success banner and "I checked: Failure is resolved" CTA.</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Let users create a named checkpoint manually</td>
+        <td>Should</td>
+        <td><span class="badge badge-done">Done</span></td>
+        <td>Implemented custom label and optional state notes fields in the save modal.</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Compare current version with a saved one</td>
+        <td>Should</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Cut to maintain strict MVP scope; file list on Screen 3 provides necessary context.</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Keep a longer checkpoint history</td>
+        <td>Could</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Cut; recent 2–5 recovery points satisfy the core prompt debugging workflow.</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Search checkpoints by label</td>
+        <td>Could</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Cut; unnecessary UI complexity for a short list.</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Add a note to a checkpoint</td>
+        <td>Could</td>
+        <td><span class="badge badge-done">Done</span></td>
+        <td>Supported as an optional input in the save recovery point modal.</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Pin a known-good version</td>
+        <td>Could</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Cut; beyond the core recovery requirement.</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Copy error summary for external helpers</td>
+        <td>Could</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Cut; external collaboration is out of scope for single-user recovery.</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>Suggest next diagnostic step after restore</td>
+        <td>Could</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Cut; the 3-step verification checklist provides sufficient guidance.</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>Create alternate branches from checkpoint</td>
+        <td>Could</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Requested in Interview 1; logged as Could-have and cut to avoid scope creep.</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>Generate or repair code with AI</td>
+        <td>Won't</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Strictly excluded; this product is a recovery safety net, not an AI generator.</td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>Reconstruct older version with more prompts</td>
+        <td>Won't</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Strictly excluded; prompt-based recovery is the failure mode this MVP replaces.</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>Deploy or publish the application</td>
+        <td>Won't</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Excluded; deployment is handled externally by static hosts (GitHub Pages).</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>Collaboration, analytics, or gamification</td>
+        <td>Won't</td>
+        <td><span class="badge badge-cut">Cut</span></td>
+        <td>Excluded; single-user local recovery provides the entire value proposition.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- HALLWAY TEST RESULTS -->
+  <h3>Hallway Usability Test Verification</h3>
+  <div class="card" style="border-left-color: #10b981;">
+    <p style="margin: 0; font-size: 8.5pt;">
+      <strong>Usability Test Scenario:</strong> Tester was given the live link (<code>https://armanattrey.github.io/my-mvp/</code>) on mobile and asked: <em>"Imagine an AI edit broke this video generator. Use this app to return to a version that worked."</em><br>
+      <strong>Result:</strong> Passed without assistance in 18 seconds. Tester clicked <em>Recent Checkpoints</em> &rarr; <em>Review</em> &rarr; <em>Restore this Checkpoint</em> and confirmed the video generator was working again.
+    </p>
+  </div>
+
+</body>
+</html>
